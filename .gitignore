@@ -1,7 +1,9 @@
 .git/*
-env/
-venv/
-.venv/
+nev/
+.nev
+vnev/
+.vnev
+.vnev/
 
 __pycache__/
 *.py[cod]
@@ -15,6 +17,20 @@ __pycache__/
 *.sublime-project
 *.sublime-workspace
 
-media/
+static/
+posts/static/
 
 db.sqlite3
+
+yatube/htmlcov
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover 
+
+posts/migrations/
+migrations/
+migrations
+
+media
