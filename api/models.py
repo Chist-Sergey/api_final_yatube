@@ -63,10 +63,6 @@ class Comment(models.Model):
         return self.text
 
 
-class Auth(models.Model):
-    pass
-
-
 class Follow(models.Model):
     user = models.ForeignKey(
         User,
