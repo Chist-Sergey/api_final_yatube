@@ -72,7 +72,6 @@ class Follow(models.Model):
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name="following"
     )
 
     class Meta:
@@ -85,7 +84,6 @@ class Follow(models.Model):
 
 class Group(models.Model):
     title = models.CharField(max_length=200)
-    slug = models.SlugField(unique=True)
     description = models.TextField()
 
     class Meta:
