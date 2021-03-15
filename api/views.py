@@ -4,10 +4,12 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters, mixins, viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
+from .permissions import IsOwnerOnly
 from .models import Follow, Group, Post, User
 from .serializers import (
     CommentSerializer, FollowSerializer, GroupSerializer, PostSerializer)
-PERMISSION_CLASSES = [IsAuthenticatedOrReadOnly]
+
+PERMISSION_CLASSES = [IsOwnerOnly, IsAuthenticatedOrReadOnly]
 
 
 class ListCreateOnlyModelViewSet(mixins.CreateModelMixin,
@@ -44,6 +46,12 @@ class CommentViewSet(viewsets.ModelViewSet):
         serializer.save(**params)
 
 
+class GroupViewSet(ListCreateOnlyModelViewSet):
+    queryset = Group.objects.all()
+    permission_classes = [IsAuthenticatedOrReadOnly, ]
+    serializer_class = GroupSerializer
+
+
 class FollowViewSet(ListCreateOnlyModelViewSet):
     queryset = Follow.objects.all()
     serializer_class = FollowSerializer
@@ -57,9 +65,3 @@ class FollowViewSet(ListCreateOnlyModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
-
-
-class GroupViewSet(ListCreateOnlyModelViewSet):
-    queryset = Group.objects.all()
-    permission_classes = [IsAuthenticatedOrReadOnly, ]
-    serializer_class = GroupSerializer
