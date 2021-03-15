@@ -78,6 +78,7 @@ class Follow(models.Model):
         default=False,
     )
 
+
 class Group(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()

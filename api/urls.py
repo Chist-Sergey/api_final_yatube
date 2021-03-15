@@ -14,3 +14,15 @@ router.register('follow', FollowViewSet, basename='follow')
 urlpatterns = [
     path('v1/', include(router.urls)),
 ]
+urlpatterns = [
+    path(
+        'api/v1/token/',
+        TokenObtainPairView.as_view(),
+        name='token_obtain_pair'
+    ),
+    path(
+        'api/v1/token/refresh/',
+        TokenRefreshView.as_view(),
+        name='token_refresh'
+    ),
+]
