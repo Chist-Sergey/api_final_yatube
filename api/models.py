@@ -59,7 +59,7 @@ class Comment(models.Model):
         related_name="comments"
     )
     text = models.TextField(
-        max_length=10**3
+        max_length=10000
     )
     created = models.DateTimeField(
         auto_now_add=True
@@ -79,13 +79,13 @@ class Follow(models.Model):
         User,
         on_delete=models.CASCADE,
         null=True, blank=True,
-        related_name='follower',
-        verbose_name='Подписчик',
+        related_name="follower",
+        verbose_name="Подписчик",
     )
     following = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         null=True, blank=True,
-        related_name='following',
-        verbose_name='Автор',
+        related_name="following",
+        verbose_name="Автор",
     )

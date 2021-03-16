@@ -4,12 +4,12 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters, mixins, viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
-from .permissions import IsOwnerOnly
+from .permissions import IsOwnerOnlyOrReadOnly
 from .models import Follow, Group, Post, User
 from .serializers import (
     CommentSerializer, FollowSerializer, GroupSerializer, PostSerializer)
 
-PERMISSION_CLASSES = [IsOwnerOnly, IsAuthenticatedOrReadOnly]
+PERMISSION_CLASSES = [IsOwnerOnlyOrReadOnly, IsAuthenticatedOrReadOnly]
 
 
 class ListCreateOnlyModelViewSet(mixins.CreateModelMixin,
@@ -53,7 +53,6 @@ class GroupViewSet(ListCreateOnlyModelViewSet):
 
 
 class FollowViewSet(ListCreateOnlyModelViewSet):
-    queryset = Follow.objects.all()
     serializer_class = FollowSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, ]
     filterset_fields = ['following', ]
