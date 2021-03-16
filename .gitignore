@@ -29,8 +29,4 @@ htmlcov/
 coverage.xml
 *.cover 
 
-posts/migrations/
-migrations/
-migrations
-
 media
