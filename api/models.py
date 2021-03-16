@@ -90,4 +90,3 @@ class Follow(models.Model):
         verbose_name='Автор',
     )
 
-

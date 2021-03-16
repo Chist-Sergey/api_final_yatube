@@ -107,8 +107,6 @@ REST_FRAMEWORK = {
         'user': '100/minute',
         'anon': '10/minute',
     },
-    'DEFAULT_PAGINATION_CLASS': 'api.pagination.CustomPagination',
-    'PAGE_SIZE': 10,
 }
 
 

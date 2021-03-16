@@ -57,7 +57,7 @@ class FollowSerializer(serializers.ModelSerializer):
         following = data.get('following')
         if user == following:
             raise ValidationError('You cannot follow to yourself')
-            return data
+        return data
 
     class Meta:
         fields = ('user', 'following')
